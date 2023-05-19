@@ -26,9 +26,7 @@ class ImportController extends Controller
     public function setSites(Request $request, SitesRequest $requestValid)
     {
 
-    	$validatedData = $requestValid->validated();
-
-        if ($errors = $this->importService->setSites($validatedData, $request->user()->id)) {
+        if ($errors = $this->importService->setSites($requestValid->validated(), $request->user()->id)) {
             return $this->error('Some data wrong', 200, $errors);
         }
 
@@ -39,9 +37,7 @@ class ImportController extends Controller
     public function setHideSite($id, HideSiteRequest $requestValid)
     {
 
-    	$validatedHideSite = $requestValid->validated();
-
-        if ($errors = $this->importService->setHideSite($id, $validatedHideSite)) {
+        if ($errors = $this->importService->setHideSite($id, $requestValid->validated())) {
             return $this->error('Some data wrong', 200, $errors);
         }
 
@@ -51,10 +47,7 @@ class ImportController extends Controller
 
     public function setUpdateSite($id, UpdateSiteRequest $requestValid)
     {
-
-    	$validatedUpdateSite = $requestValid->validated();
-
-        if ($errors = $this->importService->setUpdateSite($id, $validatedUpdateSite)) {
+        if ($errors = $this->importService->setUpdateSite($id, $requestValid->validated())) {
             return $this->error('Some data wrong', 200, $errors);
         }
 
@@ -66,9 +59,7 @@ class ImportController extends Controller
     public function setAdvertisePosition($id, AdvertisePositionRequest $requestValid)
     {
 
-    	$validatedAdvertisePosition = $requestValid->validated();
-
-        if ($errors = $this->importService->setAdvertisePosition($id, $validatedAdvertisePosition)) {
+        if ($errors = $this->importService->setAdvertisePosition($id, $requestValid->validated())) {
             return $this->error('Some data wrong', 200, $errors);
         }
 
@@ -78,10 +69,8 @@ class ImportController extends Controller
 
     public function setRentPlace($id, Request $request, RentPlaceRequest $requestValid)
     {
-
-    	$validatedRentPlace = $requestValid->validated();
-
-        if ($errors = $this->importService->setRentPlace($id, $request->user()->id, $validatedRentPlace)) {
+        
+        if ($errors = $this->importService->setRentPlace($id, $request->user()->id, $requestValid->validated())) {
             return $this->error('Some data wrong', 200, $errors);
         }
 
